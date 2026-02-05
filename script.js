@@ -18,7 +18,6 @@ var nav = $(".site-nav");
 if (navBtn && nav) {
   navBtn.onclick = function () {
     nav.classList.toggle("open");
-    navBtn.setAttribute("aria-expanded", nav.classList.contains("open") ? "true" : "false");
   };
 }
 
@@ -41,9 +40,7 @@ $a(".faq-q").forEach(function (q) {
 
 function getLS(k, f) {
   try {
-    var v = localStorage.getItem(k);
-    if (!v) { return f; }
-    return JSON.parse(v);
+    return JSON.parse(localStorage.getItem(k)) || f;
   } catch (e) {
     return f;
   }
@@ -62,12 +59,6 @@ function renderWorkouts() {
   }
   var data = getLS("workouts", []);
   workoutList.innerHTML = "";
-  if (!data.length) {
-    var li0 = document.createElement("li");
-    li0.textContent = "No workouts yet.";
-    workoutList.appendChild(li0);
-    return;
-  }
   data.forEach(function (w) {
     var li = document.createElement("li");
     li.textContent = w.date + " - " + w.type + " (" + w.minutes + " min)";
@@ -80,12 +71,12 @@ function updateStats() {
   var total = $("#statTotal");
   var mins = $("#statMinutes");
   if (total) {
-    total.textContent = String(data.length);
+    total.textContent = data.length;
   }
   if (mins) {
-    mins.textContent = String(data.reduce(function (s, w) {
+    mins.textContent = data.reduce(function (s, w) {
       return s + Number(w.minutes || 0);
-    }, 0));
+    }, 0);
   }
 }
 
@@ -179,9 +170,9 @@ function setRandomLocalQuoteNoRepeat() {
   var pick = localQuotes[0];
   var tries = 0;
 
-  while (tries < 12) {
+  while (tries < 10) {
     pick = localQuotes[Math.floor(Math.random() * localQuotes.length)];
-    var text = """ + pick.t + "" — " + pick.a;
+    var text = "\"" + pick.t + "\" — " + pick.a;
     if (text !== last) {
       quote.textContent = text;
       setLastQuoteText(text);
@@ -190,7 +181,7 @@ function setRandomLocalQuoteNoRepeat() {
     tries = tries + 1;
   }
 
-  var fallback = """ + pick.t + "" — " + pick.a;
+  var fallback = "\"" + pick.t + "\" — " + pick.a;
   quote.textContent = fallback;
   setLastQuoteText(fallback);
 }
@@ -203,8 +194,10 @@ function loadQuote() {
   quote.textContent = "Loading...";
 
   var cb = Date.now();
+
   var direct = "https://api.quotable.io/random?cb=" + cb;
   var viaProxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(direct);
+
   var urls = [direct, viaProxy];
 
   (function tryNext(i) {
@@ -220,12 +213,14 @@ function loadQuote() {
       })
       .then(function (d) {
         if (d && d.content) {
-          var text = """ + d.content + "" — " + (d.author || "Unknown");
+          var text = "\"" + d.content + "\" — " + (d.author || "Unknown");
           var last = getLastQuoteText();
+
           if (text === last) {
             tryNext(i + 1);
             return;
           }
+
           quote.textContent = text;
           setLastQuoteText(text);
           return;
