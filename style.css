@@ -1,0 +1,263 @@
+:root{
+  --bg:#f2f4f8;
+  --card:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#2563eb;
+  --accent-dark:#1d4ed8;
+  --success:#16a34a;
+  --danger:#dc2626;
+}
+
+body.dark{
+  --bg:#0f172a;
+  --card:#111827;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --border:#1f2937;
+  --accent:#7aa2ff;
+  --accent-dark:#4f7cff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:1.4rem;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.site-nav{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.site-nav a{
+  padding:8px 12px;
+  border-radius:10px;
+  transition:background .2s ease;
+}
+
+.site-nav a:hover{
+  background:var(--bg);
+}
+
+.nav-toggle{
+  display:none;
+  border:1px solid var(--border);
+  background:var(--bg);
+  padding:8px 10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+h1,h2,h3{
+  margin-top:0;
+}
+
+p{
+  margin:8px 0;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+button{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  transition:background .2s ease,transform .15s ease;
+}
+
+button:hover{
+  background:var(--accent-dark);
+  transform:translateY(-1px);
+}
+
+button:active{
+  transform:translateY(0);
+}
+
+input,select,textarea{
+  width:100%;
+  padding:10px 12px;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+}
+
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+}
+
+textarea{
+  resize:vertical;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th,td{
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+
+th{
+  background:var(--bg);
+  font-weight:700;
+}
+
+#workoutList{
+  list-style:none;
+  padding:0;
+}
+
+#workoutList li{
+  padding:10px;
+  margin-bottom:8px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.faq-q{
+  width:100%;
+  text-align:left;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  cursor:pointer;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.faq-a{
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--card);
+  margin-bottom:10px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:var(--bg);
+  padding:16px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  text-align:center;
+}
+
+.stat strong{
+  font-size:1.4rem;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:var(--card);
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+@media (max-width:900px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav-toggle{
+    display:inline-block;
+  }
+
+  .site-nav{
+    display:none;
+    position:absolute;
+    right:20px;
+    top:70px;
+    flex-direction:column;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+  }
+
+  .site-nav.open{
+    display:flex;
+  }
+}

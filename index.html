@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitTrack | Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">FitTrack</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="contact.html">Contact</a>
+      <button id="themeBtn" type="button">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1>Track your workouts. Stay consistent.</h1>
+      <p class="muted">A simple multi-page HTML/CSS/JS fitness tracker with localStorage and a public quote API.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Workout Log</h2>
+        <p class="muted">Add workouts and keep them saved in your browser.</p>
+        <a href="workouts.html"><button type="button">Go to Workouts</button></a>
+      </div>
+      <div class="card">
+        <h2>BMI Calculator</h2>
+        <p class="muted">Quick BMI calculation (coursework demo).</p>
+        <a href="workouts.html"><button type="button">Calculate BMI</button></a>
+      </div>
+      <div class="card">
+        <h2>Motivation</h2>
+        <p class="muted">Load a motivational quote from a public API.</p>
+        <a href="motivation.html"><button type="button">Get a Quote</button></a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Quick Stats</h2>
+      <div class="stats">
+        <div class="stat">
+          <div><strong id="statTotal">0</strong></div>
+          <div class="muted">Workouts</div>
+        </div>
+        <div class="stat">
+          <div><strong id="statMinutes">0</strong></div>
+          <div class="muted">Minutes</div>
+        </div>
+        <div class="stat">
+          <div class="muted">Saved automatically</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span data-year></span> FitTrack</p>
+  </footer>
+</body>
+</html>

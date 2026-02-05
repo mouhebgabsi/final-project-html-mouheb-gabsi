@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitTrack | About</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">FitTrack</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="contact.html">Contact</a>
+      <button id="themeBtn" type="button">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1>About this project</h1>
+      <p>This website is built with 5 HTML pages, 1 CSS file, and 1 JavaScript file.</p>
+      <ul>
+        <li>Workout logging stored using localStorage</li>
+        <li>BMI calculator (simple calculation)</li>
+        <li>Motivation page loads a quote from a public API</li>
+        <li>Theme toggle + responsive layout</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>FAQ</h2>
+
+      <button class="faq-q" type="button" aria-expanded="false">Does it save workouts?</button>
+      <div class="faq-a" hidden>Yes. Workouts are saved in localStorage and shown on the Workouts page.</div>
+
+      <button class="faq-q" type="button" aria-expanded="false">Does it use a public API?</button>
+      <div class="faq-a" hidden>Yes. The Motivation page requests a random quote from a public quote API.</div>
+
+      <button class="faq-q" type="button" aria-expanded="false">Is it mobile friendly?</button>
+      <div class="faq-a" hidden>Yes. The layout collapses and the menu becomes a dropdown on smaller screens.</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span data-year></span> FitTrack</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitTrack | Workouts</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">FitTrack</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="workouts.html">Workouts</a>
+      <a href="motivation.html">Motivation</a>
+      <a href="contact.html">Contact</a>
+      <button id="themeBtn" type="button">Toggle Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1>Log a Workout</h1>
+      <form id="workoutForm" novalidate>
+        <label>
+          Workout type
+          <select name="type" required>
+            <option value="">Select...</option>
+            <option>Walking</option>
+            <option>Running</option>
+            <option>Gym</option>
+            <option>Yoga</option>
+            <option>Football</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          Minutes
+          <input type="number" name="minutes" min="1" max="600" required placeholder="e.g., 30" />
+        </label>
+
+        <label>
+          Date
+          <input type="date" name="date" required />
+        </label>
+
+        <button type="submit">Add Workout</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Saved Workouts</h2>
+      <ul id="workoutList"></ul>
+    </section>
+
+    <section class="card">
+      <h2>BMI Calculator</h2>
+      <input id="height" type="number" placeholder="Height (cm)" />
+      <input id="weight" type="number" placeholder="Weight (kg)" />
+      <button id="calcBMI" type="button">Calculate</button>
+      <p id="bmiResult" class="muted"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span data-year></span> FitTrack</p>
+  </footer>
+</body>
+</html>
